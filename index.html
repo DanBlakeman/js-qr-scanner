@@ -2,19 +2,29 @@
 <html>
 <head>
   <script src="bower_components/qcode-decoder/build/qcode-decoder.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <title>QR Play</title>
 </head>
 <body>
-  <video id="camera" autoplay></video>
+  <h1>IP-MobileLookup</h1>
+  <video width="100%"id="camera" autoplay></video>
+  <p id="info-pane">Scan a piece of equipement to lookup.</p>
   <script type="text/javascript">
     var qr = new QCodeDecoder();
 
     var video = document.getElementById('camera');
 
     QCodeDecoder()
-      .decodeFromCamera(video, function(er,res){
-        alert(res);
-    }, 'once');
+      .decodeFromCamera(video, function(err,res){
+        if (typeof res === 'undefined') {
+          $('#info-pane').text('QR not recognised, Try moving your camera back some!');
+        } else {
+          window.location = "/" + res;
+        }
+    });
 
   </script>
 </body>
