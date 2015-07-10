@@ -1,0 +1,22 @@
+body {
+  background-color: #CC0000;
+  color: white;
+  font-family: Arial, Geneva, sans-serif;
+}
+
+a {
+  color: white;
+}
+
+.info-pane {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#myModal {
+  color: black;
+}
+
+.desc_page {
+  text-align: center;
+}

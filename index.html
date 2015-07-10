@@ -3,15 +3,26 @@
 <head>
   <script src="bower_components/qcode-decoder/build/qcode-decoder.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>QR Play</title>
 </head>
 <body>
+  <div class="header">
   <h1>IP-MobileLookup</h1>
+  <h4>Learn & discuss, any equipment, any place, any time!</h2>
+  </div>
   <video width="100%"id="camera" autoplay></video>
-  <p id="info-pane">Scan a piece of equipement to lookup.</p>
+  <div class="info-pane">
+    <span id="icon" class="glyphicon glyphicon-facetime-video"></span>
+    <span id="info-pane">Simply scan a QR code to lookup.</span>
+  </div>
+
+
   <script type="text/javascript">
     var qr = new QCodeDecoder();
 
@@ -21,6 +32,7 @@
       .decodeFromCamera(video, function(err,res){
         if (typeof res === 'undefined') {
           $('#info-pane').text('QR not recognised, Try moving your camera back some!');
+          $('#icon').switchClass('glyphicon-facetime-video', 'glyphicon-exclamation-sign');
         } else {
           window.location = "/" + res;
         }
